@@ -1,11 +1,11 @@
 {
-  "name": "erikmichaelswan.com-v2",
-  "version": "2.0.0",
-  "description": "My personal website, v2.",
+  "name": "react-boilerplate",
+  "version": "1.0.0",
+  "description": "My personal React boilerplate with Redux, Sass, and Webpack",
   "main": "./src/client/index.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:erikmswan/erikmichaelswan.com-v2.git"
+    "url": "git@github.com:erikmswan/react-boilerplate.git"
   },
   "scripts": {
     "start": "webpack && webpack-dev-server --inline --colors --content-base dist/client/"
@@ -37,5 +37,5 @@
     "webpack-dev-server": "^1.16.2"
   },
   "author": "Erik Swan",
-  "license": "ISC"
+  "license": "MIT"
 }
