@@ -5,16 +5,7 @@
         "es6": true,
         "node": true
     },
-    "globals": {
-        "ga": true,
-        "mapboxgl": true,
-        "turf": true,
-        "describe": true,
-        "it": true,
-        "expect": true,
-        "sinon": true,
-        "google": true
-    },
+    "globals": {},
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended"
@@ -45,18 +36,20 @@
             4,
             { "SwitchCase": 1 }
         ],
-        "key-spacing": ["error", {
-            "multiLine" : {
-                "beforeColon" : true,
-                "afterColon"  : true
+        "key-spacing": [
+            "error", {
+                "multiLine" : {
+                    "beforeColon" : true,
+                    "afterColon"  : true
 
-            },
-            "align"     : {
-                "beforeColon" : true,
-                "afterColon"  : true,
-                "on"          : "colon"
+                },
+                "align"     : {
+                    "beforeColon" : true,
+                    "afterColon"  : true,
+                    "on"          : "colon"
+                }
             }
-        }],
+        ],
         "linebreak-style": [
             "error",
             "unix"
