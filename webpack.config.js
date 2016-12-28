@@ -11,7 +11,7 @@ let config = {
     },
     devTool   : '#cheap-inline-source-map',
     devServer : {
-        outputPath : path.join(__dirname, 'dist/client'),
+        outputPath : path.resolve(__dirname, 'dist/client'),
         port       : process.env.DEV_PORT || 9080
     },
     module : {
