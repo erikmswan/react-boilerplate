@@ -1,2 +1,2 @@
-# My personal website, v2.
-Nothing yet.
+# My personal React boilerplate
+With Redux, Sass, and Webpack.
