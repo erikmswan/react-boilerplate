@@ -1,0 +1,41 @@
+{
+  "name": "erikmichaelswan.com-v2",
+  "version": "2.0.0",
+  "description": "My personal website, v2.",
+  "main": "./src/client/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:erikmswan/erikmichaelswan.com-v2.git"
+  },
+  "scripts": {
+    "start": "webpack && webpack-dev-server --inline --colors --content-base dist/client/"
+  },
+  "dependencies": {
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "react-redux": "^5.0.1",
+    "redux": "^3.6.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.6.0",
+    "babel-core": "^6.17.0",
+    "babel-eslint": "^7.0.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "css-loader": "^0.26.1",
+    "eslint": "^3.12.2",
+    "eslint-plugin-react": "^6.8.0",
+    "file-loader": "^0.9.0",
+    "html-webpack-plugin": "^2.24.1",
+    "node-sass": "^4.1.1",
+    "postcss-loader": "^1.2.1",
+    "sass-loader": "^4.1.1",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.14.0",
+    "webpack-dev-server": "^1.16.2"
+  },
+  "author": "Erik Swan",
+  "license": "ISC"
+}

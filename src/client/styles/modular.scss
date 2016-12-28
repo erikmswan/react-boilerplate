@@ -1,0 +1,19 @@
+
+.margin { margin: $spacing; }
+.margin-top { margin-top: $spacing; }
+.margin-right { margin-right: $spacing; }
+.margin-bottom { margin-bottom: $spacing; }
+.margin-left { margin-left: $spacing; }
+.no-margin { margin: 0; }
+
+.padding { padding: $spacing; }
+.padding-top { padding-top: $spacing; }
+.padding-right { padding-right: $spacing; }
+.padding-bottom { padding-bottom: $spacing; }
+.padding-left { padding-left: $spacing; }
+.no-padding { padding: 0; }
+
+.clear-both { clear: both; }
+
+.relative { position: relative; }
+.absolute { position: absolute; }
