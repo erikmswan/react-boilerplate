@@ -1,115 +1,115 @@
 
 // TYPOGRAPHY
 @mixin extra-light {
-    font-weight: 100;
+  font-weight: 100;
 }
 
 @mixin light {
-    font-weight: 200;
+  font-weight: 200;
 }
 
 @mixin regular {
-    font-weight: 400;
+  font-weight: 400;
 }
 
 @mixin semi-bold {
-    font-weight: 600;
+  font-weight: 600;
+  border: none;
 }
 
 @mixin bold {
-    font-weight: 800;
+  font-weight: 800;
 }
 
 @mixin truncate-text {
-    text-overflow: ellipsis;
-    overflow-x: hidden;
-    white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+  white-space: nowrap;
 }
 
 
 // POSITIONING
 @mixin flex-center($justify-content-val: center) {
-    display: flex;
-    align-items: center;
-    @if $justify-content-val != no-justify {
-        justify-content: $justify-content-val;
-    }
+  display: flex;
+  align-items: center;
+  @if $justify-content-val != no-justify {
+      justify-content: $justify-content-val;
+  }
+}
+
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 @mixin fit-container($offset: 0) {
-    position: absolute;
-    top: 0 + $offset;
-    right: 0 + $offset;
-    bottom: 0 + $offset;
-    left: 0 + $offset;
+  position: absolute;
+  top: 0 + $offset;
+  right: 0 + $offset;
+  bottom: 0 + $offset;
+  left: 0 + $offset;
 }
 
 
 // ANIMATION
 // The 'anim-hide' and 'anim-show' mixins help with revealing and hiding with a transition.
-// display:none; doesn't tween to display:block; – so opacity must be used.
+// display: none; doesn't tween to display: block; – so opacity must be used.
 // However, simply changing the opacity just makes it transparent – the element
 // is still part of the DOM and can be interacted with.
 // The 'visibility' property will hide the element from the DOM after it is tweened.
-@mixin anim-show($delay: 0s) {
-    opacity: 1;
-    visibility: visible;
-    @include anim-transition-delay($delay);
+$default-transition: all .3s $long-ease-out;
+
+@mixin anim-show($transition: $default-transition) {
+  opacity: 1;
+  visibility: visible;
+  transition: $transition;
 }
 
-@mixin anim-hide($delay: 0s) {
-    opacity: 0;
-    visibility: hidden;
-    @include anim-transition-delay($delay);
+@mixin anim-hide($transition: $default-transition) {
+  opacity: 0;
+  visibility: hidden;
+  transition: $transition;
 }
 
-@mixin anim-transition-delay($delay: 0s) {
-    transition: opacity .33s ease-in-out $delay,
-                visibility .33s ease-in-out $delay,
-                transform .33s ease-in-out $delay;
+@mixin fade-in-initial($direction: 'in', $transition: $default-transition, $offset: 15px) {
+  @include anim-hide($transition);
+
+  @if $direction == 'up' {
+    transform: translateY($offset);
+  }
+  @else if $direction == 'right' {
+    transform: translateX($offset);
+  }
+  @else if $direction == 'down' {
+    transform: translateY(-$offset);
+  }
+  @else if $direction == 'left' {
+    transform: translateX(-$offset);
+  }
 }
 
-@mixin fade-in-initial($delay: 0s) {
-    @include anim-hide($delay);
+@mixin fade-in-active($transition: $default-transition) {
+  @include anim-show($transition);
+  transform: none;
 }
 
-@mixin fade-in-active($delay: 0s) {
-    @include anim-show($delay);
-    transform: none;
-}
+@mixin fade-in-constructor($direction: 'in', $transition: $default-transition, $offset: 15px) {
+  &.fade-#{$direction}-appear,
+  &.fade-#{$direction}-enter {
+    @include fade-in-initial($direction, $transition, $offset);
+  }
 
-@mixin fade-up-initial($delay: 0s) {
-    @include fade-in-initial($delay);
-    transform: translateY(5px);
-}
+  &.fade-#{$direction}-exit,
+  &.fade-#{$direction}-appear-active,
+  &.fade-#{$direction}-enter-active,
+  &.fade-#{$direction}-enter-done {
+    @include fade-in-active($transition);
+  }
 
-@mixin fade-up-active($delay: 0s) {
-    @include fade-in-active($delay);
-}
-
-@mixin fade-right-initial($delay: 0s) {
-    @include fade-in-initial($delay);
-    transform: translateX(-5px);
-}
-
-@mixin fade-right-active($delay: 0s) {
-    @include fade-in-active($delay);
-}
-
-@mixin fade-down-initial($delay: 0s) {
-    @include fade-in-initial($delay);
-    transform: translateY(-5px);
-}
-
-@mixin fade-down-active($delay: 0s) {
-    @include fade-in-active($delay);
-}
-
-@mixin fade-left-initial($delay: 0s) {
-    @include fade-in-initial($delay);
-    transform: translateX(5px);
-}
-
-@mixin fade-left-active($delay: 0s) {
-    @include fade-in-active($delay);
+  &.fade-#{$direction}-exit-active,
+  &.fade-#{$direction}-exit-done {
+    @include fade-in-initial($direction, $transition, $offset);
+  }
 }

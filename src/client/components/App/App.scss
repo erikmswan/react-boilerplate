@@ -1,0 +1,8 @@
+@import 'globals.scss';
+
+.app-container {
+  @include flex-center();
+  background-image: radial-gradient($gray-228 50%, $white 100%);
+  flex-direction: column;
+  min-height: 100vh;
+}

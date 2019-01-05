@@ -1,5 +1,63 @@
 
 body {
-    font-family: $base-font-family;
-    color: $gray-165;
+  font-size: $base-font-size;
+  font-family: $base-font-family;
+  color: $gray-104;
+  margin: 0;
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+h1 {
+  font-family: $roboto-condensed;
+  font-size: 36px;
+}
+
+h2 {
+  font-family: $roboto-condensed;
+  font-size: 28px;
+}
+
+h3 {
+  font-family: $roboto-condensed;
+  font-size: 20px;
+  font-weight: normal;
+  text-align: center;
+  margin: 0 0 20px;
+}
+
+a {
+  color: $gray-68;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+button {
+  background: transparent;
+  color: $gray-136;
+  font-family: $base-font-family;
+  font-size: 18px;
+  font-weight: 600;
+  height: 50px;
+  min-width: 180px;
+  border: 2px solid $gray-185;
+  border-radius: 5px;
+  box-shadow: none;
+  transition: .2s;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    color: white;
+    background: black;
+    border-color: $black;
+  }
+
+  &:active {
+    color: $gray-136;
+    background: white;
+    transition: 0s;
+  }
 }

@@ -14,11 +14,24 @@ $sm-up: 'screen and (min-width:768px)';
 $xs: 'screen and (max-width:479px)';
 $xs-up: 'screen and (min-width:480px)';
 
-// colors
+// palette
 $white: #FFF;
 $black: #000;
-$gray-165: #686868;
+$gray-68: rgb(68, 68, 68);
+$gray-104: rgb(104, 104, 104);
+$gray-136: rgb(136, 136, 136);
+$gray-185: rgb(185, 185, 185);
+$gray-200: rgb(200, 200, 200);
+$gray-228: rgb(228, 228, 228);
+$success-green: #25a865;
+$invalid-red: #ff3f3f;
+$focus-blue: #40a7ff;
 
 // typography
-$base-font-family: 'Roboto Condensed', Arial, Helvetica, sans-serif;
-$base-font-color: $gray-165;
+$base-font-family: 'Helvetica', sans-serif;
+$base-font-color: $gray-104;
+$base-font-size: 16px;
+$roboto-condensed: 'Roboto Condensed', Arial, Helvetica, sans-serif;
+
+// animation
+$long-ease-out: cubic-bezier(0.11, 0.62, 0.35, 1);
