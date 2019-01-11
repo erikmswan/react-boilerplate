@@ -1,4 +1,4 @@
-# A credit card UI demo
+# React boilerplate
 
 - [Setup](#setup)
 - [Usage](#usage)
@@ -33,8 +33,6 @@ activeHosts: 'default',
 For the development server, use `npm run start:dev`. This will build files to memory and host the app by default on `http://localhost:9080`.
 
 ### Production
-
-#### (DEPRECATED SECTION)
 
 To build the production verson of the app, use `npm run start` and serve the files from the `/dist` folder.
 
