@@ -11,9 +11,9 @@ class Client {
 
     // we import our daos and pass the class context as the first argument.
     //  so our daos will be like python where the first arg is always `self`
-    Object.keys(daos).forEach(key => {
+    for (let key in daos) {
       this[key] = (...args) => daos[key](this, ...args);
-    });
+    }
   }
 
   request = ({ url, method, data, auth, ...options }) => (
