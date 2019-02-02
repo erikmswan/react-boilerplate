@@ -1,0 +1,6 @@
+@import 'globals.scss';
+
+.title {
+  @include fade-in-initial(up);
+  @include fade-in-active;
+}

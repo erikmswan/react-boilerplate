@@ -73,6 +73,20 @@ $default-transition: all .3s $long-ease-out;
   transition: $transition;
 }
 
+/* How to use the below mixins.
+ * 
+ * These are designed to work with the `react-transition-group` package. After wrapping your
+ * React component with a CSS transition group, it will gain certain classes during its animation lifecycle.
+ * These classes are based off of the class name you pass to the transition group component.
+ * If you set that class to fade-in (or fade-up, fade-right etc), you can then use the 'fade-in-constructor'
+ * below to create all of the styles necessary to have an element fade in and then back out again.
+ *
+ * For example:
+ * .element-to-animate {
+ *   @include fade-in-constructor($direction: up, $transition: all .3s $long-ease-out, $offset: 25px);
+ * }
+ *
+ **/
 @mixin fade-in-initial($direction: 'in', $transition: $default-transition, $offset: 15px) {
   @include anim-hide($transition);
 

@@ -4,7 +4,7 @@
 export const routesMap = {
   HOME: {
     path: '/',
-    // thunk: thunks.getPlaceholder
+    // thunk: thunks.fetchPlaceholder
   },
 
   // example entry

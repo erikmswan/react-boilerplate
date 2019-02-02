@@ -6,12 +6,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getLocationType } from 'state/selectors';
 import { hot } from 'react-hot-loader';
-import {
-  Home
-} from 'routes';
-import {
-  Switcher
-} from 'components';
+import { Home } from 'routes';
+import { Switcher } from 'components';
 
 const App = ({ locationType }) => (
   <div className={`${locationType} app-container`}>
