@@ -4,9 +4,10 @@ import './App.scss';
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { NOT_FOUND } from 'redux-first-router';
 import { getLocationType } from 'state/selectors';
 import { hot } from 'react-hot-loader';
-import { Home } from 'routes';
+import { Home, NotFound } from 'routes';
 import { Switcher } from 'components';
 
 const App = ({ locationType }) => (
@@ -14,7 +15,8 @@ const App = ({ locationType }) => (
     <div className='content-container'>
       <Switcher
         routes={{
-          HOME: Home
+          HOME: Home,
+          [NOT_FOUND]: NotFound
         }}
       />
     </div>

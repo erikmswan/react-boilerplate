@@ -1,4 +1,4 @@
-// const webpack = require('webpack');
+const webpack = require('webpack');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -9,7 +9,7 @@ const cleanOptions = {
 };
 
 let config = merge(common, {
-  mode: 'development',
+  mode: 'production',
   output: {
     filename: 'bundle-[hash:6].js'
   },
@@ -27,9 +27,9 @@ let config = merge(common, {
   },
   plugins: [
     new CleanWebpackPlugin('./dist', cleanOptions),
-    // new webpack.EnvironmentPlugin({
-    //   production: true
-    // })
+    new webpack.EnvironmentPlugin({
+      production: true
+    })
   ]
 });
 
