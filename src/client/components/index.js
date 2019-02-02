@@ -1,7 +1,7 @@
 
-export { default as App } from './App/App';
-export { default as Switcher } from './Switcher/Switcher';
+export App from './App/App';
+export Switcher from './Switcher/Switcher';
 
 // Icons
-export { default as CheckIcon } from './Icon/Check';
-export { default as XIcon } from './Icon/X';
+export CheckIcon from './Icon/Check';
+export XIcon from './Icon/X';
