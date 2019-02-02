@@ -63,6 +63,16 @@ button {
     color: white;
     background: black;
     border-color: $black;
+
+    &.button-success {
+      background: $success-green;
+      border-color: $success-green;
+    }
+
+    &.button-failure {
+      background: $failure-red;
+      border-color: $failure-red;
+    }
   }
 
   &:active {
