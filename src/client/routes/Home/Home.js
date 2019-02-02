@@ -1,10 +1,10 @@
-import './Home.scss';
-import * as React from "react";
-import { hot } from "react-hot-loader";
+import * as React from 'react';
+import { Welcome } from 'components';
+import { hot } from 'react-hot-loader';
 
 export const Home = () => (
   <div className='home-container'>
-    <h1 className='title'>Hello World!</h1>
+    <Welcome />
   </div>
 );
 

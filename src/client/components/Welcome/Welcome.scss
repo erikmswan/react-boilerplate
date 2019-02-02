@@ -1,0 +1,84 @@
+@import 'globals.scss';
+
+.welcome-container {
+  position: relative;
+  max-width: $content-width;
+  margin: 0 auto;
+}
+
+.screen {
+  @include fade-in-constructor($transition: all .9s $long-ease-out);
+  text-align: center;
+
+  &.yes-screen,
+  &.no-screen {
+    transition-delay: .1s;
+    @include absolute-center;
+  }
+
+  .check,
+  .x {
+    width: 50px;
+    height: 50px;
+
+    circle,
+    path {
+      transition: all .9s ease-in-out;
+    }
+    
+    circle {
+      stroke-dasharray: 69px;
+    }
+  }
+
+  .x path {
+    stroke-dasharray: 16px;
+  }
+
+  .check path {
+    stroke-dasharray: 21px;
+  }
+
+  &.fade-in-enter,
+  &.fade-in-exit-active {
+    circle {
+      stroke-dashoffset: 69px;
+    }
+    .x path {
+      stroke-dashoffset: 16px;
+    }
+    .check path {
+      stroke-dashoffset: 21px;
+    }
+  }
+  &.fade-in-enter-active,
+  &.fade-in-enter-done {
+    .check,
+    .x {
+      circle,
+      path {
+        stroke-dashoffset: 0;
+      }
+    }
+  }
+}
+
+.title {
+  margin-bottom: 50px;
+}
+
+.cta {
+  margin-bottom: 40px;
+}
+
+.button-container {
+  @include flex-center;
+
+  button {
+    margin-right: 15px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

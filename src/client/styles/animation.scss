@@ -1,0 +1,21 @@
+
+$directions: 'in', 'up', 'right', 'down', 'left';
+
+@each $direction in $directions {
+  .fade-#{$direction}-appear,
+  .fade-#{$direction}-enter {
+    @include fade-in-initial($direction);
+  }
+  
+  .fade-#{$direction}-exit,
+  .fade-#{$direction}-appear-active,
+  .fade-#{$direction}-enter-active,
+  .fade-#{$direction}-enter-done {
+    @include fade-in-active;
+  }
+  
+  .fade-#{$direction}-exit-active,
+  .fade-#{$direction}-exit-done {
+    @include fade-in-initial($direction);
+  }
+}

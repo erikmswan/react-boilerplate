@@ -45,8 +45,18 @@ button {
   border: 2px solid $gray-185;
   border-radius: 5px;
   box-shadow: none;
-  transition: .2s;
+  transition: .13s;
   cursor: pointer;
+
+  &.button-success {
+    color: $success-green;
+    border-color: $success-green;
+  }
+
+  &.button-failure {
+    color: $failure-red;
+    border-color: $failure-red;
+  }
 
   &:hover,
   &:focus {
