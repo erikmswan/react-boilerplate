@@ -16,9 +16,9 @@ class Client {
     }
   }
 
-  request = ({ url, method, data, auth, ...options }) => (
+  request = ({ path, service, method, data, auth = true, ...options }) => (
     axios({
-      url,
+      url: service + path,
       method,
       data,
       ...this.addAuthData(auth),
@@ -32,7 +32,7 @@ class Client {
   
   addApiKey = apiKey => ({
     headers: {
-      'X-RMS-API-KEY': apiKey
+      'API-KEY-HEADER-NAME': apiKey
     }
   })
 }

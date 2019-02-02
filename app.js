@@ -8,12 +8,12 @@ module.exports = Object.freeze({
   //  look for `activeHosts`
   serviceHosts: {
     default: {
-      apiHost: 'http://localhost:8090',
+      serviceHost1: 'http://localhost:8090',
     }
   },
 
   constants: {
-    appTitle: 'In Profundis.',
+    appTitle: 'React Boilerplate',
     storage: 'REDUX_HOT_RELOAD_STORAGE',
 
     // events

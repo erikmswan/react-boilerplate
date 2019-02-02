@@ -1,21 +1,45 @@
 
 export const postPlaceholder = (
-  self,
+  { request, serviceHosts },
   data
-) => self.request({
-  url: `${self.serviceHosts.apiHost}/v1/placeholder`,
+) => request({
+  path: '/v1/placeholder',
+  service: serviceHosts.serviceHost1,
   method: 'POST',
-  auth: true,
   data
 });
 
 export const getPlaceholder = (
-  self,
+  { request, serviceHosts },
   limit = 30
-) => self.request({
-  url: `${self.serviceHosts.apiHost}/v1/placeholder`,
+) => request({
+  path: `/v1/placeholder`,
+  service: serviceHosts.serviceHost1,
   method: 'GET',
+  auth: false,
   params: {
     limit
+  }
+});
+
+export const updatePlaceholder = (
+  { request, serviceHosts },
+  newPlaceholder
+) => request({
+  path: `/v1/placeholder`,
+  service: serviceHosts.serviceHost1,
+  method: 'PUT',
+  data: newPlaceholder
+});
+
+export const deletePlaceholder = (
+  { request, serviceHosts },
+  placeholderId
+) => request({
+  path: `/v1/placeholder`,
+  service: serviceHosts.serviceHost1,
+  method: 'DELETE',
+  params: {
+    placeholderId
   }
 });
