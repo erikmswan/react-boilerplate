@@ -12,11 +12,11 @@ export class Welcome extends React.Component {
     screen: this.defaultScreen
   }
 
+  changeToDefaultScreen = () => this.setState({ screen: this.defaultScreen });
+
   changeScreen = newScreen => () => {
     this.setState({ screen: newScreen });
-    setTimeout(() => {
-      this.setState({ screen: this.defaultScreen });
-    }, 1500);
+    setTimeout(this.changeToDefaultScreen, 1500);
   };
   
   render() {
@@ -30,10 +30,10 @@ export class Welcome extends React.Component {
           timeout={300}
           classNames='fade-up'
         >
-          <div className='screen start-screen'>
-            <h1 className='title'>Hello World!</h1>
-            <p className='cta'>Click one of these buttons!</p>
-            <div className='button-container'>
+          <div className='welcome-screen welcome-screen_start'>
+            <h1 className='welcome-title'>Hello World!</h1>
+            <p className='welcome-cta'>Click one of these buttons!</p>
+            <div className='welcome-button-container'>
               <button className='button-success' onClick={this.changeScreen('yes')}>Yes!</button>
               <button className='button-failure' onClick={this.changeScreen('no')}>No!</button>
             </div>
@@ -49,7 +49,7 @@ export class Welcome extends React.Component {
           classNames='fade-in'
           unmountOnExit
         >
-          <div className='screen yes-screen'>
+          <div className='welcome-screen welcome-screen_yes'>
             <h1>Great!</h1>
             <CheckIcon />
           </div>
@@ -64,7 +64,7 @@ export class Welcome extends React.Component {
           classNames='fade-in'
           unmountOnExit
         >
-          <div className='screen no-screen'>
+          <div className='welcome-screen welcome-screen_no'>
             <h1>Unfortunate!</h1>
             <XIcon />
           </div>
