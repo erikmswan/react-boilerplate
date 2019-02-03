@@ -11,6 +11,7 @@
   "main": "./src/client/index.js",
   "scripts": {
     "start": "npm run build && npm run server",
+    "start:dev": "npm run build:client && npm run build:server && npm run server",
     "build": "npm run build:client && npm run build:server -- --prod",
     "build:client": "webpack --config webpack.prod.js",
     "build:server": "webpack --config webpack.server.js",
