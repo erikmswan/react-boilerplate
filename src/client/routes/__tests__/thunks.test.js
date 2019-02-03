@@ -1,5 +1,5 @@
 import { setPlaceholderData } from 'state/actions';
-import { getPlaceholder } from 'state/selectors';
+import { getPlaceholderData } from 'state/selectors';
 import placeholderStub from 'stubs/placeholder.json';
 import {
   fetchPlaceholder
@@ -25,7 +25,7 @@ describe('routes/thunks', () => {
       const dispatch = jest.fn();
       const getState = jest.fn();
 
-      getPlaceholder.mockImplementation(() => 'placeholder');
+      getPlaceholderData.mockImplementation(() => 'placeholder');
       
       return fetchPlaceholder(dispatch, getState).then(() => {
         expect(dispatch).toHaveBeenCalledTimes(0);

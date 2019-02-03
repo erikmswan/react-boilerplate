@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`client class methods addApiKey should return the right object: addApiKey 1`] = `
+Object {
+  "headers": Object {
+    "API-KEY-HEADER-NAME": undefined,
+  },
+}
+`;
+
+exports[`client class methods addAuthData should add auth data: addAuthData::true 1`] = `
+Object {
+  "headers": Object {
+    "API-KEY-HEADER-NAME": 1,
+  },
+}
+`;
+
+exports[`client class methods addAuthData should not add auth data: addAuthData::false 1`] = `Object {}`;
+
+exports[`client class methods request should fire a request: request 1`] = `
+Array [
+  Object {
+    "0": Object {
+      "data": undefined,
+      "method": "GET",
+      "params": Object {
+        "limit": 30,
+      },
+      "url": "undefined/v1/placeholder",
+    },
+    "data": undefined,
+    "headers": Object {
+      "API-KEY-HEADER-NAME": 1,
+    },
+    "method": undefined,
+    "url": NaN,
+  },
+]
+`;

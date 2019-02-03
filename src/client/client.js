@@ -4,7 +4,7 @@ import * as daos from './dao';
 import { serviceHosts } from 'app';
 import { store } from 'state';
 
-class Client {
+export class Client {
   constructor(serviceHosts) {
     // we save our serviceHosts map object set in env.js
     this.serviceHosts = serviceHosts;

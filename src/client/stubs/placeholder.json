@@ -1,14 +1,14 @@
 [
   {
     "id": 1,
-    "data": {}
+    "locationType": "HOME"
   },
   {
     "id": 2,
-    "data": {}
+    "locationType": "MAGIC"
   },
   {
     "id": 3,
-    "data": {}
+    "locationType": "SECRECY"
   }
 ]

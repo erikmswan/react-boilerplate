@@ -26,12 +26,5 @@ export default {
       const action = redirect({ type: 'LOGIN' });
       dispatch(action);
     }
-  },
-  onAfterChange: (dispatch, getState) => {
-    const { type } = getState().location;
-
-    if (type === 'LOGIN' && !isServer) {
-      alert('Failed to login.');
-    }
   }
 };

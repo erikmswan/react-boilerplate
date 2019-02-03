@@ -28,6 +28,17 @@ describe('dao/placeholder', () => {
 
       expect(result).toMatchSnapshot('getPlaceholder');
     });
+
+    it('should fallback to default limit', () => {
+      const result = getPlaceholder(
+        {
+          request,
+          serviceHosts
+        }
+      );
+
+      expect(result).toMatchSnapshot('getPlaceholder::default');
+    });
   });
 
   describe('putPlaceholder', () => {

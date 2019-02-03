@@ -11,6 +11,18 @@ Object {
 }
 `;
 
+exports[`dao/placeholder getPlaceholder should fallback to default limit: getPlaceholder::default 1`] = `
+Object {
+  "auth": false,
+  "method": "GET",
+  "params": Object {
+    "limit": 30,
+  },
+  "path": "/v1/placeholder",
+  "service": "host",
+}
+`;
+
 exports[`dao/placeholder getPlaceholder should return the correct dao object: getPlaceholder 1`] = `
 Object {
   "auth": false,

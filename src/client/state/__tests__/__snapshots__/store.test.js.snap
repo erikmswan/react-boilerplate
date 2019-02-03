@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`configureStore should fallback to the default options param: configureStore::noOptions 1`] = `
+Object {
+  "store": "store",
+  "thunk": "thunk",
+}
+`;
+
+exports[`configureStore should properly configure the store: configureStore 1`] = `
+Object {
+  "store": "store",
+  "thunk": "thunk",
+}
+`;
