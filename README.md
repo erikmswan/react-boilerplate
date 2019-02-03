@@ -46,7 +46,7 @@ activeHosts: 'production',
 
 For the development server, use `npm run dev`. This will build files to memory and host the app by default on `http://localhost:9080` using `webpack-dev-server`.
 
-For the server, do `npm run server:dev`. This will build the server files and execute them, host on `http://localhost:3000` by default. There is no hot reloading for the server yet, so you will have to rebuild the files every time you make a change.
+For the server, do `npm run server:dev`. This will build the server files and execute them, hosted on `http://localhost:3000` by default. There is no hot reloading for the server yet, so you will have to rebuild the files every time you make a change.
 
 ### Hot Reloading
 
@@ -62,21 +62,25 @@ export const hot(module)(Home);
 
 No need to wrap any other components, just the dynamically loaded ones serving as top-level route components such as `src/routes/Home/Home` and `src/routes/NotFound/NotFound`.
 
+You can find more information in the [Routing](#routing) section of this readme.
+
 ## Production
 
-To build the production verson of the app, use `npm run start`. This will build the production client and server assets and run the production server on port 80. Alternatively, if you've already built the assets, you can simply use `npm run server` to start the server.
+To build the production verson of the app, use `npm run start`. This will build the production client and server assets and run the production server, which is hosted on on port 80 by default.
+
+Alternatively, if you've already built the assets, you can simply use `npm run server` to start the server.
 
 # State
 
 This repo uses Redux as its global data store. Redux utilizes three core components: reducers, selectors and actions.
 
 * `reducers` manage a branch of the state tree, such as `state.auth` or `state.location`. They do this by accepting an action object which contains information about which part of the tree to change and what to change it with.
-* `actions` generate the object that selects a case in a reducer. They always include a `type` key, which matches a switch case in a reducer, and sometimes a `payload` key, which contains information to add to state.
+* `actions` generate the object that selects a case in a reducer. They always include a `type` key, which matches a switch case in a reducer, and sometimes a `payload` key, which contains information about how to modify the state.
 * `selectors` fetch the desired data from the state tree. This step is helpful in memoizing state lookups to make it faster. This repo uses `reselect` for selector memoization.
 
-The pattern of the `state` directory tree is designed to make importing easier. Different branches of the state tree are kept under `modules`, and each module has up to three files: the aforementioned `reducer`, `selectors` and `actions`.
+The pattern of the `state` directory tree is designed to make importing easier. Different branches of the state tree are kept under `modules`, and each module has up to three files: `reducer.js`, `selectors.js` and `actions.js`.
 
-These files are exported from the `reducers`, `selectors` and `actions` files in `src/state`. The result of this is that you can import any of the selectors and actions by using something like this without having to remember which branch of the state tree they belong in:
+These files are exported from the `reducers.js`, `selectors.js` and `actions.js` files in `src/state`. The result of this is that you can import any of the selectors and actions without having to remember which branch of the state tree they belong in:
 
 ```javascript
 import { getLocationType } from 'state/selectors';
@@ -92,6 +96,31 @@ The route map is found at `src/routes/routesMap.js`. In this file, you can defin
 NOTE: You can use the `composeThunks` function to chain multiple thunks together on a route. Please note that if one of those thunks reject a promise, it will not execute rest of the thunks in that chain.
 
 In your application, you can change the route, such as in an event handler, by dispatching actions that change the route in redux. These actions can be found at the bottom of the routesMap, for example, `toHome`.
+
+```javascript
+import * as React from 'react';
+import { connect } from 'react-redux';
+import { toHome as _toHome } from 'routes';
+
+const Component = ({ toHome }) => (
+  <a onClick={toHome}>Go home!</a>
+);
+
+const mapDispatchToProps = {
+  toHome: _toHome
+};
+/**
+ * Note how the above `mapDispatchToProps` is an object
+ * and not a function that accepts the dispatch parameter.
+ * When you do this, all the object values are
+ * automatically wrapped in the dispatch function, as if you wrote:
+ * 
+ * const mapDispatchToProps = dispatch => ({
+ *  toHome: () => dispatch(_toHome)
+ * });
+ **/
+export default connect(null, mapDispatchToProps)(Component);
+```
 
 Because routing is handled by the client, it's important to remember that the server must redirect all traffic to root, like below. There is currently a server bundled with the repo that handles this, but it's still good to note.
 
