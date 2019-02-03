@@ -1,7 +1,6 @@
 
 // This is for our non-environment-specific constants
 module.exports = Object.freeze({
-
   // the objects in serviceHosts define what urls are used for each
   //  service name. Which object is used is determined
   //  by a git ignored `env.js` file you make with `env.template.js`.

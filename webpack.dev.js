@@ -11,7 +11,7 @@ let config = merge(common, {
   devtool: 'inline-source-map',
   devServer: {
     hot: true,
-    contentBase: './dist',
+    contentBase: './dist/public',
     historyApiFallback: true,
     port: env.devPort || 9080
   },

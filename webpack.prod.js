@@ -26,7 +26,7 @@ let config = merge(common, {
     }
   },
   plugins: [
-    new CleanWebpackPlugin('./dist', cleanOptions),
+    new CleanWebpackPlugin('./dist/public', cleanOptions),
     new webpack.EnvironmentPlugin({
       production: true
     })

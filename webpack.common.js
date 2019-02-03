@@ -23,7 +23,7 @@ let config = {
     app: ['./src/client/index.js']
   },
   output: {
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist/public')
   },
   module: {
     rules: [
