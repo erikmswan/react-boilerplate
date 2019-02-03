@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -26,10 +25,7 @@ let config = merge(common, {
     }
   },
   plugins: [
-    new CleanWebpackPlugin('./dist/public', cleanOptions),
-    new webpack.EnvironmentPlugin({
-      production: true
-    })
+    new CleanWebpackPlugin('./dist/public', cleanOptions)
   ]
 });
 

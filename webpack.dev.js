@@ -13,7 +13,7 @@ let config = merge(common, {
     hot: true,
     contentBase: './dist/public',
     historyApiFallback: true,
-    port: env.devPort || 9080
+    port: env.ports.clientDev || 9080
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin()

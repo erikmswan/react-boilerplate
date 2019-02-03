@@ -1,7 +1,8 @@
 import Express from 'express';
+import env from '../../env';
 
 const app = new Express();
-const port = process.env.NODE_ENV === 'production' ? 3001 : 3000;
+const port = process.env.NODE_ENV === 'production' ? env.ports.serverProd : env.ports.serverDev;
 
 app.use(Express.static(__dirname + '/public'));
 

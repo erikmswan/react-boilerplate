@@ -3,8 +3,10 @@ const path = require('path');
 const common = require('./webpack.common.js');
 const nodeExternals = require('webpack-node-externals');
 
+const isProduction = process.argv[4] === '--prod';
+
 const config = {
-  mode: 'production',
+  mode: isProduction ? 'production' : 'development',
   target: 'node',
   node: {
     __dirname: false,
@@ -20,11 +22,6 @@ const config = {
     filename: '[name].js'
   },
   module: common.module,
-  plugins: [
-    new webpack.EnvironmentPlugin({
-      production: true
-    })
-  ],
   resolve: {
     alias: {
       src: path.resolve(__dirname, 'src'),

@@ -8,7 +8,8 @@ import { configureStore } from 'state';
 import { App } from './components';
 
 // set our loglevel
-log.setLevel(process.env.production ? 'error' : 'debug');
+console.log('INDEX!', process.env.NODE_ENV);
+log.setLevel(process.env.NODE_ENV === 'production' ? 'error' : 'debug');
 
 // set up our store
 export const { store } = configureStore(window[constants.storage] || {});
