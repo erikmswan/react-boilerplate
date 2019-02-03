@@ -1,5 +1,7 @@
 # React boilerplate
 
+This is a React/Redux/Webpack-based boilerplate client application with routing, networking, styles, state, components and testing.
+
 - [Setup](#setup)
 - [Usage](#usage)
   - [Development](#development)
@@ -72,11 +74,72 @@ Alternatively, if you've already built the assets, you can simply use `npm run s
 
 # State
 
-This repo uses Redux as its global data store. Redux utilizes three core components: reducers, selectors and actions.
+This repo uses `redux` as its global data store. `redux` utilizes three core components: reducers, selectors and actions.
 
-* `reducers` manage a branch of the state tree, such as `state.auth` or `state.location`. They do this by accepting an action object which contains information about which part of the tree to change and what to change it with.
-* `actions` generate the object that selects a case in a reducer. They always include a `type` key, which matches a switch case in a reducer, and sometimes a `payload` key, which contains information about how to modify the state.
-* `selectors` fetch the desired data from the state tree. This step is helpful in memoizing state lookups to make it faster. This repo uses `reselect` for selector memoization.
+* `reducers` manage a branch of the state tree, such as `state.auth` or `state.location`. They do this by accepting an action object which contains information about which part of the tree to change and what to change it with. A reducer looks like this:
+
+```javascript
+const initialState = {
+  data: {}
+};
+
+const auth = (state = initialState, action) => {
+  switch(action.type) {
+    case constants.setData:
+      return {
+        ...state,
+        data: action.payload
+      };
+    case constants.clearData:
+      return {
+        ...state,
+        data: initialState.data
+      };
+    default:
+      return state;
+  }
+};
+```
+
+* `actions` generate the object that selects a case in a reducer. They always include a `type` key, which matches a switch case in a reducer, and sometimes a `payload` key, which contains information about how to modify the state. Actions look like this:
+
+```javascript
+import { constants } from 'app';
+
+export const setData = data => ({
+  type: constants.setData,
+  payload: data
+});
+export const clearData = data => ({
+  type: constants.setData
+});
+```
+
+* `selectors` fetch the desired data from the state tree. This step is helpful in memoizing state lookups to make it faster. This repo uses `reselect` for selector memoization. Selectors look like this:
+
+```javascript
+import { createSelector } from 'reselect';
+import { getKey } from 'state/selectors';
+
+export const getData = state => state?.auth?.data;
+/** The `?` operator conditionally accesses properties.
+ * If the property is undefined, it won't throw an error.
+ * Functinoally equivalent to writing:
+ * 
+ * export const getData = state => state && state.auth && state.auth.data
+ **/
+
+export const getDataByKey = createSelector(
+  getKey, // <-- this `getKey` function is passed the entire state tree and selects the current key.
+  getData, // <-- this function, which is just defined right above, gets the current auth data.
+  (key, data) => data[key] // <-- the order of the arguments (key, data) matches the order of the selectors.
+);
+/** This function uses `createSelector` from `reselect`.
+ * It passes the state object through each selector callback,
+ * and the final callback gets the results of each selector
+ * in the order it was executed.
+ **/
+```
 
 The pattern of the `state` directory tree is designed to make importing easier. Different branches of the state tree are kept under `modules`, and each module has up to three files: `reducer.js`, `selectors.js` and `actions.js`.
 
@@ -89,22 +152,27 @@ import { setPlaceholderData } from 'state/actions';
 
 # Routing
 
-This repo uses a client-side routing solution, or CSR, with the `redux-first-router` library. Based on redux state and the HTML5 history api, top-level components are switched to simulate 'routes'. You can find these top-level components in `src/routes`.
+This repo uses a client-side routing solution, or CSR, with the `redux-first-router` library. Based on `redux` state and the HTML5 history api, top-level components are switched to simulate 'routes'. You can find these top-level components in `src/routes`.
 
 The route map is found at `src/routes/routesMap.js`. In this file, you can define what `thunks` (functions that return a promise) are automatically invoked when going to that route. For example, this could be useful to fetch data user data from the server when going to a 'settings' page.
 
 NOTE: You can use the `composeThunks` function to chain multiple thunks together on a route. Please note that if one of those thunks reject a promise, it will not execute rest of the thunks in that chain.
 
-In your application, you can change the route, such as in an event handler, by dispatching actions that change the route in redux. These actions can be found at the bottom of the routesMap, for example, `toHome`.
+In your application, you can change the route, such as in an event handler, by dispatching actions that change the route in `redux`. These actions can be found at the bottom of the routesMap, for example, `toHome`.
 
 ```javascript
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { toHome as _toHome } from 'routes';
 
 const Component = ({ toHome }) => (
   <a onClick={toHome}>Go home!</a>
 );
+
+Component.propTypes = {
+  toHome: PropTypes.func.isRequired
+};
 
 const mapDispatchToProps = {
   toHome: _toHome
@@ -122,6 +190,8 @@ const mapDispatchToProps = {
 export default connect(null, mapDispatchToProps)(Component);
 ```
 
+## CSR Servers
+
 Because routing is handled by the client, it's important to remember that the server must redirect all traffic to root, like below. There is currently a server bundled with the repo that handles this, but it's still good to note.
 
 ```javascript
@@ -138,14 +208,14 @@ app.get('/*', (req, res) => {
 Network requests are made using the `client` found in `src/client`. You can import it like so:
 
 ```javascript
-import client from 'client'
+import client from 'client';
 ```
 
 The `client` makes available all functions kept in the `dao` folder. These functions look like this:
 
 ```javascript
 export const getPlaceholder = (
-  { request, serviceHosts },
+  { request, serviceHosts }, // <-- this is the client context, e.g. 'this'
   limit = 30
 ) => request({
   path: `/v1/placeholder`,
@@ -158,7 +228,7 @@ export const getPlaceholder = (
 });
 ```
 
-Each of these functions is imported, and the first argument is injected by the `client` class to be the class context. In other words, it works like Python, where the first argument of these functions is `self` or `this`. Each one of these functions must also return a promise.
+Each of these functions has the `client` class context injected as its first argument in a Python-like style. Each one of these functions must also return a promise.
 
 After importing the client in a component, it can be used like so:
 
@@ -185,7 +255,7 @@ export class App from React.Component {
 
 ## Auth
 
-The client also supports adding api keys to certain routes. It looks for the api key in redux by default in the `auth` branch. Check the `src/client` file for more info.
+The client also supports adding api keys to certain routes. It looks for the api key in `redux` by default in the `auth` branch. Check the `src/client` file for more info.
 
 # Styles
 
@@ -195,7 +265,7 @@ All other component-level stylesheets are kept with the components themselves. T
 
 ```javascript
 // App.js
-import './App.scss'
+import './App.scss';
 import * as React from 'react';
 // ...
 ```
@@ -203,7 +273,7 @@ import * as React from 'react';
 In a component-level stylesheet, you can import global variables, mixins, keyframes etc. by putting this at the top:
 
 ```scss
-@import 'globals.scss'
+@import 'globals.scss';
 ```
 
 The `scss` loader will make those available. Add more to globals by importing it in `src/styles/_globals.scss`.

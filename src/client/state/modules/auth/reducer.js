@@ -1,10 +1,10 @@
 import { constants } from 'app';
 
-const defaultState = {
+const initialState = {
   apiKey: null
 };
 
-const auth = (state = defaultState, action) => {
+const auth = (state = initialState, action) => {
   switch(action.type) {
     case constants.setApiKey:
       return {
@@ -16,4 +16,4 @@ const auth = (state = defaultState, action) => {
   }
 };
 
-export { auth, defaultState };
+export { auth, initialState };
