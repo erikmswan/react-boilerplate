@@ -1,4 +1,4 @@
-import { setPlaceholder } from 'state/actions';
+import { setPlaceholderData } from 'state/actions';
 import { getPlaceholder } from 'state/selectors';
 import placeholderStub from 'stubs/placeholder.json';
 import {
@@ -8,7 +8,7 @@ import {
 jest.mock('state/modules/placeholder/actions');
 jest.mock('state/modules/placeholder/selectors');
 
-setPlaceholder.mockImplementation(arg => arg);
+setPlaceholderData.mockImplementation(arg => arg);
 
 describe('routes/thunks', () => {
   describe('fetchPlaceholder', () => {

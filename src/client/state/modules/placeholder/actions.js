@@ -1,7 +1,11 @@
 
 import { constants } from 'app';
 
-export const setPlaceholder = placeholder => ({
-  type: constants.setPlaceholder,
-  payload: placeholder
+export const setPlaceholderData = placeholderData => ({
+  type: constants.setPlaceholderData,
+  payload: placeholderData
+});
+
+export const clearPlaceholderData = () => ({
+  type: constants.clearPlaceholderData
 });

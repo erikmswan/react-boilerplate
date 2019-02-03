@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`placeholder/actions setPlaceholderData should get the placeholder data: setPlaceholderData 1`] = `
+Object {
+  "payload": "test",
+  "type": "SET_PLACEHOLDER_DATA",
+}
+`;

@@ -22,7 +22,7 @@ export const getPlaceholder = (
   }
 });
 
-export const updatePlaceholder = (
+export const putPlaceholder = (
   { request, serviceHosts },
   newPlaceholder
 ) => request({

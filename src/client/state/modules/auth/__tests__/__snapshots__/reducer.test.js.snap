@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`auth/reducer default should trigger the default case: default 1`] = `
+Object {
+  "apiKey": null,
+}
+`;
+
+exports[`auth/reducer setApiKey should trigger the setApiKey case: setApiKey 1`] = `
+Object {
+  "apiKey": "success",
+}
+`;

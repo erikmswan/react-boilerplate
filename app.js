@@ -16,7 +16,8 @@ module.exports = Object.freeze({
     storage: 'REDUX_HOT_RELOAD_STORAGE',
 
     // events
-    setPlaceholder: 'SET_PLACEHOLDER',
-    clearPlaceholder: 'CLEAR_PLACEHOLDER',
+    setPlaceholderData: 'SET_PLACEHOLDER_DATA',
+    clearPlaceholderData: 'CLEAR_PLACEHOLDER_DATA',
+    setApiKey: 'SET_API_KEY',
   }
 });

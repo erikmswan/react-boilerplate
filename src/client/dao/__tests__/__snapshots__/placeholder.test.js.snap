@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`dao/placeholder deletePlaceholder should return the correct dao object: deletePlaceholder 1`] = `
+Object {
+  "method": "DELETE",
+  "params": Object {
+    "placeholderId": "test",
+  },
+  "path": "/v1/placeholder",
+  "service": "host",
+}
+`;
+
+exports[`dao/placeholder getPlaceholder should return the correct dao object: getPlaceholder 1`] = `
+Object {
+  "auth": false,
+  "method": "GET",
+  "params": Object {
+    "limit": 10,
+  },
+  "path": "/v1/placeholder",
+  "service": "host",
+}
+`;
+
+exports[`dao/placeholder postPlaceholder should return the correct dao object: postPlaceholder 1`] = `
+Object {
+  "data": "test",
+  "method": "POST",
+  "path": "/v1/placeholder",
+  "service": "host",
+}
+`;
+
+exports[`dao/placeholder putPlaceholder should return the correct dao object: putPlaceholder 1`] = `
+Object {
+  "data": "test",
+  "method": "PUT",
+  "path": "/v1/placeholder",
+  "service": "host",
+}
+`;

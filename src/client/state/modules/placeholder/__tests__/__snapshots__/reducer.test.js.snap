@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`placeholder/reducer clearPlaceholderData should trigger the clearPlaceholderData case: clearPlaceholderData 1`] = `
+Object {
+  "data": null,
+}
+`;
+
+exports[`placeholder/reducer default should trigger the default case: default 1`] = `
+Object {
+  "data": null,
+}
+`;
+
+exports[`placeholder/reducer setPlaceholderData should trigger the setPlaceholderData case: setPlaceholderData 1`] = `
+Object {
+  "data": "success",
+}
+`;

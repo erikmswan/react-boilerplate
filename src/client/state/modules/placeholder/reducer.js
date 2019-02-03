@@ -1,4 +1,3 @@
-
 import { constants } from 'app';
 
 const defaultState = {
@@ -7,10 +6,15 @@ const defaultState = {
 
 const placeholder = (state = defaultState, action) => {
   switch(action.type) {
-    case constants.setPlaceholder:
+    case constants.setPlaceholderData:
       return {
         ...state,
         data: action.payload
+      };
+    case constants.clearPlaceholderData:
+      return {
+        ...state,
+        data: defaultState.data
       };
     default:
       return state;

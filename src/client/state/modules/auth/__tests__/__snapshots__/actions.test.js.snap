@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`auth/actions setApiKey should set the api key: setApiKey 1`] = `
+Object {
+  "payload": "test",
+  "type": "SET_API_KEY",
+}
+`;
