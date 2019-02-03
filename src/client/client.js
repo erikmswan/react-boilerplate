@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getApiKey } from 'state/selectors';
 import * as daos from './dao';
 import { serviceHosts } from 'app';
-import { store } from 'src';
+import { store } from 'state';
 
 class Client {
   constructor(serviceHosts) {

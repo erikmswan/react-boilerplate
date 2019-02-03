@@ -39,7 +39,7 @@
     },
     "moduleDirectories": [
       "node_modules",
-      "src"
+      "src/client"
     ],
     "moduleFileExtensions": [
       "js",
@@ -48,17 +48,8 @@
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
       "\\.(css|scss|less)$": "identity-obj-proxy",
-      "^src(.*)$": "<rootDir>/src$1",
       "^app$": "<rootDir>/app.js",
-      "^client(.*)$": "<rootDir>/src/client/client$1",
-      "^assets(.*)$": "<rootDir>/src/client/assets$1",
-      "^components(.*)$": "<rootDir>/src/client/components$1",
-      "^dao(.*)$": "<rootDir>/src/client/dao$1",
-      "^lib(.*)$": "<rootDir>/src/client/lib$1",
-      "^routes(.*)$": "<rootDir>/src/client/routes$1",
-      "^state(.*)$": "<rootDir>/src/client/state$1",
-      "^styles(.*)$": "<rootDir>/src/client/styles$1",
-      "^stubs(.*)$": "<rootDir>/src/client/stubs$1"
+      "^client$": "<rootDir>/src/client/client.js"
     },
     "setupFilesAfterEnv": [
       "./testSetup.js"
@@ -96,6 +87,7 @@
     "@babel/preset-react": "^7.0.0",
     "autoprefixer": "^9.1.5",
     "babel-eslint": "^9.0.0",
+    "babel-jest": "^24.0.0",
     "babel-loader": "^8.0.2",
     "clean-webpack-plugin": "^1.0.1",
     "copy-webpack-plugin": "^4.2.3",

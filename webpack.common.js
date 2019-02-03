@@ -111,18 +111,13 @@ let config = {
     })
   ],
   resolve: {
+    modules: [
+      'src/client',
+      'node_modules'
+    ],
     alias: {
-      src: path.resolve(__dirname, 'src'),
       client: path.resolve(__dirname, 'src/client/client'),
       app: path.resolve(__dirname, 'app.js'),
-      assets: path.resolve(__dirname, 'src/client/assets'),
-      components: path.resolve(__dirname, 'src/client/components'),
-      dao: path.resolve(__dirname, 'src/client/dao'),
-      lib: path.resolve(__dirname, 'src/client/lib'),
-      routes: path.resolve(__dirname, 'src/client/routes'),
-      state: path.resolve(__dirname, 'src/client/state'),
-      styles: path.resolve(__dirname, 'src/client/styles'),
-      stubs: path.resolve(__dirname, 'src/client/stubs')
     },
     extensions: ['.js', '.css', '.jsx', '.less', '.scss']
   }

@@ -2,7 +2,7 @@
 import { constants } from 'app';
 
 const defaultState = {
-  placeholder: ''
+  data: null
 };
 
 const placeholder = (state = defaultState, action) => {
@@ -10,7 +10,7 @@ const placeholder = (state = defaultState, action) => {
     case constants.setPlaceholder:
       return {
         ...state,
-        placeholder: action.payload
+        data: action.payload
       };
     default:
       return state;
