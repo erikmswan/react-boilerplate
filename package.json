@@ -1,7 +1,13 @@
 {
   "name": "react-boilerplate",
-  "version": "0.0.1",
   "description": "React Boilerplate",
+  "version": "0.0.1",
+  "author": "Erik Swan",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:erikmswan/inprofundis.git"
+  },
   "main": "./src/client/index.js",
   "scripts": {
     "start": "npm run build && npm run server",
@@ -10,14 +16,59 @@
     "build:server": "webpack --config webpack.server.js",
     "dev": "webpack-dev-server --inline --colors --config webpack.dev.js",
     "server": "node dist/server.js",
-    "server:dev": "npm run build:server && npm run server"
+    "server:dev": "npm run build:server && npm run server",
+    "test": "jest --coverage",
+    "test:update": "jest --updateSnapshot",
+    "test:watch": "jest --watch"
   },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:erikmswan/inprofundis.git"
+  "jest": {
+    "clearMocks": true,
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/client/stubs"
+    ],
+    "coverageDirectory": "coverage",
+    "coverageReporters": [
+      "json-summary",
+      "lcov"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "lines": 10
+      }
+    },
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|scss|less)$": "identity-obj-proxy",
+      "^src(.*)$": "<rootDir>/src$1",
+      "^app$": "<rootDir>/app.js",
+      "^client(.*)$": "<rootDir>/src/client/client$1",
+      "^assets(.*)$": "<rootDir>/src/client/assets$1",
+      "^components(.*)$": "<rootDir>/src/client/components$1",
+      "^dao(.*)$": "<rootDir>/src/client/dao$1",
+      "^lib(.*)$": "<rootDir>/src/client/lib$1",
+      "^routes(.*)$": "<rootDir>/src/client/routes$1",
+      "^state(.*)$": "<rootDir>/src/client/state$1",
+      "^styles(.*)$": "<rootDir>/src/client/styles$1",
+      "^stubs(.*)$": "<rootDir>/src/client/stubs$1"
+    },
+    "setupFilesAfterEnv": [
+      "./testSetup.js"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "testEnvironment": "jsdom",
+    "testURL": "http://localhost"
   },
-  "author": "Erik Swan",
-  "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
     "classnames": "^2.2.5",
@@ -41,6 +92,7 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
     "@babel/plugin-proposal-optional-chaining": "^7.0.0",
     "@babel/plugin-transform-async-to-generator": "^7.1.0",
+    "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
     "autoprefixer": "^9.1.5",
     "babel-eslint": "^9.0.0",
@@ -48,10 +100,16 @@
     "clean-webpack-plugin": "^1.0.1",
     "copy-webpack-plugin": "^4.2.3",
     "css-loader": "^1.0.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.8.0",
+    "enzyme-to-json": "^3.3.5",
     "eslint": "^5.6.0",
+    "eslint-plugin-jest": "^22.2.2",
     "eslint-plugin-react": "^7.11.1",
     "file-loader": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.0.0",
     "less": "^3.8.1",
     "less-loader": "^4.0.5",
     "node-sass": "^4.7.2",

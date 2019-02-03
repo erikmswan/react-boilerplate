@@ -5,18 +5,7 @@ const autoprefixer = require('autoprefixer');
 const path = require('path');
 const constants = require('./app').constants;
 const env = require('./env.js');
-
-const babelOptions = {
-  presets: ['@babel/react'],
-  plugins: [
-    '@babel/plugin-proposal-class-properties',
-    '@babel/plugin-proposal-optional-chaining',
-    '@babel/plugin-proposal-object-rest-spread',
-    '@babel/plugin-proposal-export-default-from',
-    '@babel/plugin-transform-async-to-generator',
-    'react-hot-loader/babel'
-  ]
-};
+const babelOptions = require('./babel.config.js');
 
 let config = {
   entry: {

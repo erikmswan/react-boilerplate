@@ -10,7 +10,7 @@ import { hot } from 'react-hot-loader';
 import { Home, NotFound } from 'routes';
 import { Switcher } from 'components';
 
-const App = ({ locationType }) => (
+export const App = ({ locationType }) => (
   <div className={`${locationType} app-container`}>
     <div className='content-container'>
       <Switcher
@@ -27,8 +27,9 @@ App.propTypes = {
   locationType: PropTypes.string
 };
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   locationType: getLocationType(state)
 });
 
-export default hot(module)(connect(mapStateToProps)(App));
+export const ConnectedApp = connect(mapStateToProps)(App); 
+export default hot(module)(ConnectedApp);

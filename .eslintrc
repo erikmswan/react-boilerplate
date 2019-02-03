@@ -3,11 +3,13 @@
     "browser": true,
     "commonjs": true,
     "es6": true,
-    "node": true
+    "node": true,
+    "jest/globals": true
   },
   "extends": [
     "eslint:recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:jest/recommended"
   ],
   "parser": "babel-eslint",
   "parserOptions": {
@@ -15,7 +17,10 @@
     "allowImportExportEverywhere": false,
     "codeFrame": true
   },
-  "plugins": ["react"],
+  "plugins": [
+    "react",
+    "jest"
+  ],
   "settings": {},
   "rules": {
     "no-var": ["error"],
@@ -25,5 +30,17 @@
     "no-console": 0,
     "no-case-declarations": 0,
     "react/no-unescaped-entities": 0
-  }
+  },
+  "overrides": [
+    {
+      "files": ["src/**/*.test.js"],
+      "globals": {
+        "jest": true,
+        "create": true,
+        "shallow": true,
+        "mount": true,
+        "render": true
+      }
+    }
+  ]
 }
