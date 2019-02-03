@@ -2,6 +2,7 @@
 
 - [Setup](#setup)
 - [Usage](#usage)
+  - [Development](#development)
 - [Hot Reloading](#hot-reloading)
 - [Routes](#routes)
 
