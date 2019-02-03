@@ -3,8 +3,16 @@
 - [Setup](#setup)
 - [Usage](#usage)
   - [Development](#development)
-- [Hot Reloading](#hot-reloading)
-- [Routes](#routes)
+  - [Hot Reloading](#hot-reloading)
+  - [Production](#production)
+- [State](#state)
+- [Routing](#routing)
+- [Networking](#networking)
+  - [Auth](#auth)
+- [Styles](#styles)
+- [Testing](#testing)
+  - [Coverage Report](#coverage-report)
+  - [Snapshots](#snapshots)
 
 # Setup
 
