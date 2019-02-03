@@ -74,9 +74,9 @@ Alternatively, if you've already built the assets, you can simply use `npm run s
 
 # State
 
-This repo uses `redux` as its global data store. `redux` utilizes three core components: reducers, selectors and actions.
+This repo uses `redux` as its global data store. `redux` utilizes three core components: `reducers`, `selectors` and `actions`.
 
-* `reducers` manage a branch of the state tree, such as `state.auth` or `state.location`. They do this by accepting an action object which contains information about which part of the tree to change and what to change it with. A reducer looks like this:
+* `reducers` manage a branch of the state tree, such as `state.auth` or `state.location`. They do this by accepting an action object, which contains information about which part of the tree to change and what to change it with. In a reducer, remember to ALWAYS return a brand new state object! A reducer looks like this:
 
 ```javascript
 const initialState = {
@@ -87,7 +87,7 @@ const auth = (state = initialState, action) => {
   switch(action.type) {
     case constants.setData:
       return {
-        ...state,
+        ...state, // <-- this creates a shallow clone of the old state object
         data: action.payload
       };
     case constants.clearData:
@@ -123,9 +123,9 @@ import { getKey } from 'state/selectors';
 
 export const getData = state => state?.auth?.data;
 /** The `?` operator conditionally accesses properties.
- * If the property is undefined, it won't throw an error.
- * Functinoally equivalent to writing:
- * 
+ * If the property is undefined, it won't throw an error,
+ * It will simply return undefined.
+ * Functionally equivalent to writing:
  * export const getData = state => state && state.auth && state.auth.data
  **/
 
@@ -192,7 +192,7 @@ export default connect(null, mapDispatchToProps)(Component);
 
 ## CSR Servers
 
-Because routing is handled by the client, it's important to remember that the server must redirect all traffic to root, like below. There is currently a server bundled with the repo that handles this, but it's still good to note.
+Because routing is handled by the client, it's important to remember that the server must listen for all traffic and serve the index.html file at the root, like below. There is currently a server bundled with the repo that handles this, but it's still good to note.
 
 ```javascript
 app.get('/*', (req, res) => {
@@ -205,7 +205,7 @@ app.get('/*', (req, res) => {
 
 # Networking
 
-Network requests are made using the `client` found in `src/client`. You can import it like so:
+Network requests are made using the `client` class found in `src/client`. You can import it like so:
 
 ```javascript
 import client from 'client';
