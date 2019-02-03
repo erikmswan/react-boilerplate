@@ -8,6 +8,11 @@ module.exports = Object.freeze({
   serviceHosts: {
     default: {
       serviceHost1: 'http://localhost:8090',
+      serviceHost2: 'http://localhost:8091'
+    },
+    production: {
+      serviceHost1: 'http://localhost:8090',
+      serviceHost2: 'http://localhost:8091'
     }
   },
 

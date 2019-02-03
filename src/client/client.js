@@ -38,4 +38,4 @@ export class Client {
 }
 
 // add our hosts env
-export default new Client(serviceHosts[process.env.activeHosts]);
+export default new Client(serviceHosts[process.env.activeHosts || 'default']);

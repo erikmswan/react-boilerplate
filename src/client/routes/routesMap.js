@@ -1,10 +1,16 @@
 // import { redirect } from 'redux-first-router';
-import * as thunks from './thunks';
+import {
+  composeThunks,
+  fetchPlaceholder
+} from './thunks';
 
 export const routesMap = {
   HOME: {
     path: '/',
-    thunk: thunks.fetchPlaceholder
+    thunk: composeThunks(
+      fetchPlaceholder,
+      // fetchOtherThings <-- multiple thunks can be chained with `composeThunks`
+    )
   },
 
   // example entry
