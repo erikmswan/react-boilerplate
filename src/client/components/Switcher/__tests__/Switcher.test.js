@@ -1,18 +1,27 @@
 import * as React from 'react';
 import { getLocationType } from 'state/modules/location/selectors';
 import {
-  App,
+  Switcher,
   mapStateToProps
-} from '../App';
+} from '../Switcher';
 
 jest.mock('state/modules/location/selectors');
 
-describe('components/App', () => {
+const testRoute = 'a long time ago';
+const testString = 'in a galaxy far far away';
+const testProps = {
+  routes: {
+    [testRoute]: () => testString
+  },
+  locationType: testRoute
+};
+
+describe('components/Switcher', () => {
   describe('render', () => {
     it('should render without error', () => {
-      const result = shallow(<App />);
+      const result = shallow(<Switcher {...testProps} />);
 
-      expect(result).toMatchSnapshot('App');
+      expect(result).toMatchSnapshot('Switcher');
     });
   });
 

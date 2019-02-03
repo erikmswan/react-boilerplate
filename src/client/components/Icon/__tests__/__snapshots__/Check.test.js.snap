@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/Icon/Check render should render without error: Check 1`] = `
+<svg
+  className="check-icon"
+  height="24"
+  viewBox="0 0 24 24"
+  width="24"
+>
+  <g
+    fill="none"
+    fillRule="evenodd"
+    stroke="#25A865"
+    transform="translate(1 1)"
+  >
+    <circle
+      cx="11"
+      cy="11"
+      r="11"
+    />
+    <path
+      d="M4.349 11.408l4.066 5.269L17.51 6.069"
+      strokeLinecap="round"
+    />
+  </g>
+</svg>
+`;

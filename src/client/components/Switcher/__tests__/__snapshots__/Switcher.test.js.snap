@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/Switcher render should render without error: Switcher 1`] = `<a long time ago />`;

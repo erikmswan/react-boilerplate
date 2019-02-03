@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`components/App render should render the component: App 1`] = `
+exports[`components/App render should render without error: App 1`] = `
 <div
   className="undefined app-container"
 >
   <div
     className="content-container"
   >
-    <Connect(Switch)
+    <Connect(Switcher)
       routes={
         Object {
           "@@redux-first-router/NOT_FOUND": [Function],

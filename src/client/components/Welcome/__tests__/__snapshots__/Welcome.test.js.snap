@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/Welcome render should render without error: Welcome 1`] = `
+<div
+  className="welcome-container"
+>
+  <CSSTransition
+    appear={true}
+    classNames="fade-up"
+    in={true}
+    timeout={300}
+  >
+    <div
+      className="welcome-screen welcome-screen_start"
+    >
+      <h1
+        className="welcome-title"
+      >
+        Hello World!
+      </h1>
+      <p
+        className="welcome-cta"
+      >
+        Click one of these buttons!
+      </p>
+      <div
+        className="welcome-button-container"
+      >
+        <button
+          className="button-success"
+          onClick={[Function]}
+        >
+          Yes!
+        </button>
+        <button
+          className="button-failure"
+          onClick={[Function]}
+        >
+          No!
+        </button>
+      </div>
+    </div>
+  </CSSTransition>
+  <CSSTransition
+    appear={true}
+    classNames="fade-in"
+    in={false}
+    timeout={
+      Object {
+        "enter": 500,
+        "exit": 300,
+      }
+    }
+    unmountOnExit={true}
+  >
+    <div
+      className="welcome-screen welcome-screen_yes"
+    >
+      <h1>
+        Great!
+      </h1>
+      <Check />
+    </div>
+  </CSSTransition>
+  <CSSTransition
+    appear={true}
+    classNames="fade-in"
+    in={false}
+    timeout={
+      Object {
+        "enter": 500,
+        "exit": 300,
+      }
+    }
+    unmountOnExit={true}
+  >
+    <div
+      className="welcome-screen welcome-screen_no"
+    >
+      <h1>
+        Unfortunate!
+      </h1>
+      <X />
+    </div>
+  </CSSTransition>
+</div>
+`;

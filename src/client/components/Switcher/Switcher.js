@@ -4,18 +4,18 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getLocationType } from 'state/selectors';
 
-export const Switch = ({ routes, locationType }) => {
+export const Switcher = ({ routes, locationType }) => {
   const Component = routes[locationType];
   return <Component />;
 };
 
-Switch.propTypes = {
+Switcher.propTypes = {
   routes: PropTypes.object.isRequired,
   locationType: PropTypes.string.isRequired
 };
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   locationType: getLocationType(state)
 });
 
-export default connect(mapStateToProps)(Switch);
+export default connect(mapStateToProps)(Switcher);
