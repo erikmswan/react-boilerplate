@@ -2,7 +2,9 @@ import Express from 'express';
 import env from '../../env';
 
 export const app = new Express();
-export const port = process.env.NODE_ENV === 'production' ? env.ports.serverProd : env.ports.serverDev;
+export const port = process.env.NODE_ENV === 'production'
+  ? env.ports.serverProd
+  : env.ports.serverDev;
 
 app.use(Express.static(__dirname + '/public'));
 

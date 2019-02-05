@@ -15,6 +15,7 @@ module.exports = Object.freeze({
       serviceHost2: 'http://localhost:8091'
     }
   },
+  tesT: 'test',
 
   constants: {
     appTitle: 'React Boilerplate',
