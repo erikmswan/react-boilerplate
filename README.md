@@ -1,3 +1,5 @@
+Link to the presentation! https://docs.google.com/presentation/d/1291yyit73I7pWa_NzgzYOuPLUV54ywfQongU4AbUNWs/edit?usp=sharing
+
 # React boilerplate
 
 This is a React/Redux/Webpack-based boilerplate client application with routing, networking, styles, state, components and testing.
